@@ -1,0 +1,35 @@
+.user-card {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  .user-image {
+    flex: 0 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 20px;
+  }
+  
+  .user-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  }
+  
+  .user-details {
+    flex: 1;
+  }
+  
+  .user-name {
+    margin-bottom: 15px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .user-info p {
+    margin-bottom: 10px;
+  }
+  
