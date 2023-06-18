@@ -11,3 +11,4 @@ export const getCharacters = (name) => {
 export const getCharacterById = (characterId) => {
   return axios.get(`${API_URL}/character/${characterId}`);
 };
+
