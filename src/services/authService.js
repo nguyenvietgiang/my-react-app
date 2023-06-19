@@ -22,6 +22,16 @@ class AuthService {
     return null;
   }
 
+  register(email, password) {
+    return axios
+      .post('https://reqres.in/api/register', { email, password })
+      .then(response => {
+        const { token } = response.data;
+        // Lưu token vào cookie
+        document.cookie = `token=${token}; path=/`;
+      });
+  }
+
   logout() {
     document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
   }

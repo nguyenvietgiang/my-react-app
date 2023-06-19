@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link, Navigate, useNavigate } from 'react-router-dom';
 import Login from './components/login';
+import Register from './components/register';
 import CharacterList from './components/CharacterList';
 import CharacterDetail from './components/CharacterDetail';
 import authService from './services/authService';
@@ -38,14 +39,16 @@ function App() {
               <button onClick={handleLogout}>Logout</button>
             </div>
           ) : (
-            <Link to="/login" className="link">Register</Link>
+            <Link to="/register" className="link">Register</Link>
           )}
         <div className="content">
         <Routes>
-          <Route path="/CharacterList" element={isLoggedIn ? <CharacterList /> : <Navigate to="/login" />} />
-          <Route path="/CharacterDetail/:id" element={isLoggedIn ? <CharacterDetail /> : <Navigate to="/login" />} />
-          <Route path="/login" element={!isLoggedIn ? <Login /> : <Navigate to="/CharacterList" />} />
-        </Routes>
+      <Route path="/" element={isLoggedIn ? <Navigate to="/CharacterList" /> : <Navigate to="/login" />} />
+       <Route path="/CharacterList" element={isLoggedIn ? <CharacterList /> : <Navigate to="/login" />} />
+      <Route path="/CharacterDetail/:id" element={isLoggedIn ? <CharacterDetail /> : <Navigate to="/login" />} />
+      <Route path="/register" element={!isLoggedIn ? <Register /> : <Navigate to="/CharacterList" />} />
+      <Route path="/login" element={!isLoggedIn ? <Login /> : <Navigate to="/CharacterList" />} />
+       </Routes>
         </div>
         <h2><strong>@2023 by Rick and Morty</strong></h2>
         <h3>Design by Nguyen Viet Giang</h3>
