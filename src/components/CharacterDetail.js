@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { getCharacterById } from '../services/apiService';
-import '../styles/CharacterDetail.css';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { getCharacterById } from "../services/apiService";
+import "../styles/CharacterDetail.css";
 
 const CharacterDetail = () => {
   const [character, setCharacter] = useState(null);
@@ -31,17 +31,25 @@ const CharacterDetail = () => {
       <div className="user-details">
         <h2 className="user-name">{character.name}</h2>
         <div className="user-info">
-          <p><strong>Status:</strong> {character.status}</p>
-          <p><strong>Species:</strong> {character.species}</p>
-          <p><strong>Gender:</strong> {character.gender}</p>
-          <p><strong>Origin:</strong> {character.origin.name}</p>
-          <p><strong>Location:</strong> {character.location.name}</p>
+          <p>
+            <strong>Status:</strong> {character.status}
+          </p>
+          <p>
+            <strong>Species:</strong> {character.species}
+          </p>
+          <p>
+            <strong>Gender:</strong> {character.gender}
+          </p>
+          <p>
+            <strong>Origin:</strong> {character.origin.name}
+          </p>
+          <p>
+            <strong>Location:</strong> {character.location.name}
+          </p>
         </div>
       </div>
     </div>
-  );    
+  );
 };
 
 export default CharacterDetail;
-
-

@@ -1,25 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import { getCharacters } from '../services/apiService';
-import ReactPaginate from 'react-paginate';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import '../styles/CharacterList.css';
+import React, { useEffect, useState } from "react";
+import { getCharacters } from "../services/apiService";
+import ReactPaginate from "react-paginate";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+import "../styles/CharacterList.css";
 
 const CharacterList = () => {
   const [characters, setCharacters] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   const charactersPerPage = 10; // Số nhân vật hiển thị trên mỗi trang
 
   useEffect(() => {
     getCharacters()
-      .then(response => {
+      .then((response) => {
         const results = response.data;
         setCharacters(results.results);
         setTotalPages(Math.ceil(results.info.pages / charactersPerPage));
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
       });
   }, []);
@@ -32,7 +32,10 @@ const CharacterList = () => {
   };
 
   const offset = pageNumber * charactersPerPage;
-  const currentCharacters = characters.slice(offset, offset + charactersPerPage);
+  const currentCharacters = characters.slice(
+    offset,
+    offset + charactersPerPage
+  );
 
   // Hàm xử lý khi bấm vào ảnh
   const handleCharacterClick = (characterId) => {
@@ -43,33 +46,35 @@ const CharacterList = () => {
     e.preventDefault();
     // Gọi API với giá trị tìm kiếm
     getCharacters(searchTerm)
-      .then(response => {
+      .then((response) => {
         const results = response.data.results;
         setCharacters(results);
         setTotalPages(Math.ceil(results.length / charactersPerPage));
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
       });
   };
   return (
     <div className="character-list">
       <div className="search-area">
-      <form onSubmit={handleSearchSubmit}>
-      <div className="search-container">
-  <input
-    type="text"
-    className="search-input"
-    placeholder="Search characters"
-    value={searchTerm}
-    onChange={(e) => setSearchTerm(e.target.value)}
-  />
-  <button className="search-button" type="submit">Search</button>
-   </div>
-       </form>
-       </div>
+        <form onSubmit={handleSearchSubmit}>
+          <div className="search-container">
+            <input
+              type="text"
+              className="search-input"
+              placeholder="Search characters"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <button className="search-button" type="submit">
+              Search
+            </button>
+          </div>
+        </form>
+      </div>
       <div className="character-grid">
-        {currentCharacters.map(character => (
+        {currentCharacters.map((character) => (
           <div
             key={character.id}
             className="character-item"
@@ -96,11 +101,6 @@ const CharacterList = () => {
       </div>
     </div>
   );
-}
+};
 
 export default CharacterList;
-
-
-
-
-
