@@ -4,7 +4,7 @@ const AboutUs = () => {
   return (
     <div>
       <h1>About Us</h1>
-      <p>This is a brief description of our company.</p>
+      <p>This is a brief description of our company (1).</p>
     </div>
   );
 };
